@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전시회 식물 도감</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 1rem; /* 전체 패딩 */
+            background-color: #f8fcfb; /* 부드러운 배경색 */
+            color: #2c3e50; /* 기본 텍스트 색상 */
+            line-height: 1.6;
+        }
+
+        /* 제목 스타일 */
+        h1 {
+            text-align: center;
+            font-size: 2.5rem; /* 큰 제목 */
+            font-weight: 700; /* 볼드 */
+            color: #2d9489; /* 강조 색상 */
+            margin-bottom: 2.5rem; /* 제목 아래 여백 */
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0f2f1; /* 제목 아래 구분선 */
+        }
+
+        /* 식물 카드 컨테이너 */
+        .plant-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 반응형 그리드 */
+            gap: 1.5rem; /* 카드 사이 간격 */
+            max-width: 1200px; /* 최대 너비 */
+            margin: 0 auto; /* 중앙 정렬 */
+            padding: 1rem; /* 컨테이너 내부 패딩 */
+        }
+
+        /* 개별 식물 카드 - 링크와 함께 */
+        .plant-card-link {
+            text-decoration: none; /* 링크 밑줄 제거 */
+            color: inherit; /* 텍스트 색상 상속 */
+            display: block; /* 카드 전체를 클릭 가능하게 */
+            border-radius: 12px; /* 부모 링크에 둥근 모서리 적용 */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* 부드러운 호버 효과 */
+        }
+
+        .plant-card-link:hover {
+            transform: translateY(-8px) scale(1.02); /* 살짝 위로 이동하고 확대 */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* 그림자 진하게 */
+        }
+
+        .plant-card {
+            background-color: #ffffff;
+            border-radius: 12px; /* 둥근 모서리 */
+            overflow: hidden; /* 이미지 둥근 모서리 적용 */
+            text-align: center;
+            height: 100%; /* 부모 링크에 맞춰 높이 채우기 */
+        }
+
+        /* 식물 이미지 */
+        .plant-card img {
+            width: 100%;
+            height: 220px; /* 이미지 높이 고정 */
+            object-fit: cover; /* 이미지가 카드에 맞춰 잘리도록 */
+            border-bottom: 1px solid #e0e0e0; /* 이미지 아래 구분선 */
+            border-top-left-radius: 12px; /* 이미지 상단 모서리 둥글게 */
+            border-top-right-radius: 12px;
+        }
+
+        /* 식물 정보 섹션 */
+        .plant-info {
+            padding: 1rem; /* 정보 섹션 내부 패딩 */
+        }
+
+        /* 식물 이름 */
+        .plant-name {
+            font-size: 1.5rem; /* 이름 폰트 크기 */
+            font-weight: 600; /* 중간 볼드 */
+            color: #3f6844; /* 식물과 어울리는 녹색 */
+            margin-top: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* 식물 설명 */
+        .plant-description {
+            font-size: 0.95rem; /* 설명 폰트 크기 */
+            color: #555; /* 부드러운 회색 */
+            line-height: 1.5;
+            padding: 0 0.5rem; /* 좌우 여백 */
+            margin-bottom: 0.5rem;
+        }
+
+        /* 모바일 반응형 조절 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+            .plant-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 작은 화면에서 카드 크기 조절 */
+                padding: 0.5rem;
+            }
+            .plant-card img {
+                height: 180px;
+            }
+            .plant-name {
+                font-size: 1.3rem;
+            }
+            .plant-description {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>✨ 우리의 식물 친구들 ✨</h1>
+
+    <div class="plant-container">
+        <!-- 식물 카드 1: 모과나무 -->
+        <a href="https://terms.naver.com/entry.naver?docId=771424&cid=46694&categoryId=46694" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/모과나무.jpg" alt="모과나무" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">모과나무</h2>
+                    <p class="plant-description">봄에 연꽃같은 꽃을 피운다. 어떤 국가나 동물들도 먹지 않는 모과를 한국에선 차(tea)로 만들어 먹는다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 2: 담쟁이덩굴 -->
+        <a href="https://terms.naver.com/entry.naver?docId=2430793&cid=46694&categoryId=46694" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/담쟁이덩굴.jpg" alt="담쟁이덩굴" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">담쟁이덩굴</h2>
+                    <p class="plant-description">담쟁이는 갈퀴를 뿌리내려 벽을 탄다. 겨울에는 이를 거두어 줄기만 남는다. 덩굴손은 그대로. 여름에 다시 자라며, 열매를 맺는다. 여름에는 온도를 낮춰주고, 겨울에는 올려주어 그린 커튼이라 불린다. 건물을 튼튼하게 응집시키는 효과 또한 갖고 있다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 3: 제비꽃 -->
+        <a href="https://terms.naver.com/entry.naver?docId=5646834&cid=62861&categoryId=62861" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/제비꽃.jpg" alt="제비꽃" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">제비꽃</h2>
+                    <p class="plant-description">잡초로 불리는데, 이들은 선천적으로 척박한 곳에서 잘 자란다. 양분이 많은 곳은 자신의 자리가 아니라는 것을 아는 듯이, 언제나 가장자리에서 숲의 영역을 확장시킨다. </p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 4: 호박 -->
+        <a href="https://terms.naver.com/entry.naver?docId=528079&cid=46640&categoryId=46640" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/호박.jpg" alt="호박" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">호박</h2>
+                    <p class="plant-description">지붕을 타고 내려오는 호박잎. 어른들은 틈만 나면 식물을 심었다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 5: 은행나무 -->
+        <a href="https://terms.naver.com/entry.naver?docId=5782101&cid=62861&categoryId=62861" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/은행나무.jpg" alt="은행나무" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">은행나무</h2>
+                    <p class="plant-description">동네 중심에 위치한 큰 은행나무. 나무들은 재개발 과정에서 대부분 버려진다. 새로 사는 것보다 뿌리를 파서 심는 것에 더 많은 자본이 들어간다. 어쩌면 이곳의 가장 오래된 기억을 지닌 존재이나 쓰레기 버리듯 버려진다. 묻거나, 목재로 쓰거나. </p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 6: 어린 감나무 -->
+        <a href="https://terms.naver.com/entry.naver?docId=3376552&cid=46694&categoryId=46694" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/감나무.jpg" alt="감나무" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">어린 감나무</h2>
+                    <p class="plant-description">느티나무 아래 어린 감나무가 자라고 있다. 이 동네 곳곳에 감나무가 많이 있다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 7: 비비추 -->
+        <a href="https://terms.naver.com/entry.naver?docId=3540406&cid=46695&categoryId=46695" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/비비추.jpg" alt="비비추" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">비비추</h2>
+                    <p class="plant-description">어린 잎은 나물로 먹고 7~8월엔 연보라색 꽃을 피운다. 정원식물로 많이 키워진다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 8: 돌나물 -->
+        <a href="https://terms.naver.com/entry.naver?docId=2430915&categoryId=51376&cid=42526" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/돌나물.jpg" alt="돌나물" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">돌나물</h2>
+                    <p class="plant-description">덩굴성 식물. 5~6월에 노란 별 모양의 꽃을 피운다. 마디마다 공중 뿌리를 내린다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 9: 칡과 나팔꽃 -->
+        <a href="https://terms.naver.com/entry.naver?docId=2430780&categoryId=51376&cid=42526" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/칡과나팔꽃.jpg" alt="칡과나팔꽃" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">칡과 나팔</h2>
+                    <p class="plant-description">칡 덩굴나무에 나팔꽃이 감싸 뻗은 모습. 칡은 척박한 곳에서 자라 토양의 상태를 확인할 수 있는 지표가 되기도 한다. 인간의 행적이 끊긴 곳에서 비로소 자유롭게 자라고 있다. </p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 10: 괭이밥 -->
+        <a href="https://terms.naver.com/entry.naver?docId=2430565&categoryId=51376&cid=42526" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/괭이밥.jpg" alt="괭이밥" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">괭이밥</h2>
+                    <p class="plant-description">고양이용 소화제. 고양이가 속이 안 좋을 때 본능적으로 뜯어먹는다. 클로버의 형태를 띠고 있다. 해외에서는 샐러드로도 먹는다 한다. </p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 11: 까마중 -->
+        <a href="https://terms.naver.com/entry.naver?docId=2430582&categoryId=51376&cid=42526" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/까마중.jpg" alt="까마중" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">까마중</h2>
+                    <p class="plant-description">검은 열매를 맺는다. 독이 있지만 옛날 어른들은 자주 먹곤 하였다. 토마토와 가지 중간의 맛을 낸다. 검어서 입술이 까매진다. 맛있다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 12: 분꽃 -->
+        <a href="https://terms.naver.com/entry.naver?docId=3386642&cid=46694&categoryId=46694" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/분꽃.jpg" alt="분꽃" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">분꽃</h2>
+                    <p class="plant-description">분꽃 1년생. 꽃이 지면 까만 열매를 맺는다. 이는 겉과 다르게 흰 가루로 이루어져 있어 과거엔 화장할 때 쓰였다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 13: 우산이끼 -->
+        <a href="https://terms.naver.com/entry.naver?docId=6080532&cid=62861&categoryId=62861" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/우산이끼.jpg" alt="우산이끼" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">우산이끼</h2>
+                    <p class="plant-description">암수가 공존한다. 솟아나 우산 모양을 띠는 개체가 수컷이다. 이끼는 온 몸으로 영양분을 채우는 헛뿌리 식물이다. 나무보다 면적 대비 탄소와 미세먼지 저감력이 뛰어나다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 14: 명아주 -->
+        <a href="https://terms.naver.com/entry.naver?docId=2430544&categoryId=51376&cid=42526" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/명아주.jpg" alt="명아주" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">명아주</h2>
+                    <p class="plant-description">잡초로 분류된다. 가볍고 튼튼하여 옛날엔 지팡이로 많이 쓰였다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 15: 나팔꽃 -->
+        <a href="https://terms.naver.com/entry.naver?docId=2430579&categoryId=51376&cid=42526" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/나팔꽃.jpg" alt="나팔꽃" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">나팔꽃</h2>
+                    <p class="plant-description">아침에 꽃을 피워 영어론 모닝 글로리다. '결속'과 '순간의 사랑'이라는 꽃말을 가지고 있다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 16: 열매마 -->
+        <a href="https://terms.naver.com/entry.naver?docId=544968&cid=46640&categoryId=46640" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/열매마.jpg" alt="열매마" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">열매마</h2>
+                    <p class="plant-description">마의 한 종류로 하늘마라고 하기도 한다. 일주일 사이에 배관 속에서 새로운 잎이 틔웠다. </p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 17: 닭의장풀 -->
+        <a href="https://terms.naver.com/entry.naver?docId=2430610&categoryId=51376&cid=42526" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/닭의장풀.jpg" alt="닭의장풀" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">닭의장풀</h2>
+                    <p class="plant-description">꽃잎의 모양새가 닭의 볏과 닮아 붙여진 이름이다. 마디마디마다 공중 뿌리가 자란다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 18: 미국자리공 -->
+        <a href="https://terms.naver.com/entry.naver?docId=2430542&categoryId=51376&cid=42526" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/미국자리공.jpg" alt="미국자리공" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">미국자리공</h2>
+                    <p class="plant-description">까만 열매가 맺힌다. 독이 있고 염색체나 잉크로 쓰인다. 고온에서 짙은 자주색에이 노란색으로 바뀐다.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 19: 천사의 나팔 -->
+        <a href="https://botanicpark.seoul.go.kr/front/plants/plantsIntroView.do?plt_sn=490" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/천사의나팔.jpg" alt="천사의 나팔" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">천사의 나팔</h2>
+                    <p class="plant-description">꽃이 위로 자라면 천사, 아래로 자라면 악마의 나팔이라 한다. 좋은 향이 난다. </p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 식물 카드 20: 한삼덩굴 -->
+        <a href="https://terms.naver.com/entry.naver?docId=2430536&categoryId=51376&cid=42526" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/한삼덩굴.jpg" alt="한삼덩굴" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">한삼덩굴</h2>
+                    <p class="plant-description">번식력이 강하고 가시가 있어 유해 식물로 지정되었다. 사람을 따라다니는 잡초로 인위식물종으로 분류하기도 한다. 쓰레기장 주변에 흔하게 볼 수 있다. 1년생 식물로 겨울이 되면 자연스레 죽는다.</p>
+                </div>
+            </div>
+        </a>
+<!-- 식물 카드 21: 개망초 -->
+        <a href="https://terms.naver.com/entry.naver?docId=2430588&categoryId=51376&cid=42526" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/개망초.jpg" alt="개망초" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">개망초</h2>
+                    <p class="plant-description">번식력이 강하고 가시가 있어 유해 식물로 지정되었다. 1년생 식물로 겨울이 되면 자연스레 죽는다.</p>
+                </div>
+            </div>
+        </a>
+<!-- 식물 카드 22: 맥문동 -->
+        <a href="https://terms.naver.com/entry.naver?docId=3539826&cid=46695&categoryId=46695" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/맥문동.jpg" alt="맥문동" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">맥문동</h2>
+                    <p class="plant-description">번식력이 강하고 가시가 있어 유해 식물로 지정되었다. 1년생 식물로 겨울이 되면 자연스레 죽는다.</p>
+                </div>
+            </div>
+        </a>
+<!-- 식물 카드 23: 채송화 -->
+        <a href="https://terms.naver.com/entry.naver?docId=562864&cid=46640&categoryId=46640" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/채송화.jpg" alt="채송화" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">채송화</h2>
+                    <p class="plant-description">번식력이 강하고 가시가 있어 유해 식물로 지정되었다. 1년생 식물로 겨울이 되면 자연스레 죽는다.</p>
+                </div>
+            </div>
+        </a>
+<!-- 식물 카드 24: 향나무 -->
+        <a href="https://terms.naver.com/entry.naver?docId=5666476&cid=46690&categoryId=46690" class="plant-card-link">
+            <div class="plant-card">
+                <img src="images/향나무.jpg" alt="향나무" onerror="this.onerror=null;this.src='https://placehold.co/400x220/3f6844/ffffff?text=이미지+없음'">
+                <div class="plant-info">
+                    <h2 class="plant-name">향나무</h2>
+                    <p class="plant-description">향기가 좋아서 향나무다. 어릴 땐 삐죽삐죽한 잎을 내다가 나이가 들면 둥글둥글한 잎을 낸다. 지금까지도 사람이 죽으면 입관하기 전 향나무를 끓인 물로 시체를 씻는 풍습이 전해 내려오기도 한다. 여러모로 사람의 일생과 연관되어 생각해 볼법하다.</p>
+                </div>
+            </div>
+        </a>
+
+
+
+
+    </div>
+
+</body>
+</html>
